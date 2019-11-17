@@ -1,0 +1,17 @@
+sudo: required
+service:
+  - docker
+before_instal:
+  - docker build -t vvineethmenon/travis:v1
+script:
+  - echo "$docker_password" | docker login -u "docker_username" --password-stdin
+  - docker images #to_verify
+  - docker push vvineethmenon/travis:v1
+notification:
+ email:
+    recipients:
+      - vineethmenon287@gmail.com
+   on_success: always
+   on_failure: always
+
+
