@@ -1,12 +1,12 @@
 sudo: required
 service:
   - docker
-before_instal:
-  - docker build -t vvineethmenon/travis:v1
+before_install:
+  - docker build -t vvineethmenon/travis:v1 .
 script:
-  - echo "$docker_password" | docker login -u "docker_username" --password-stdin
+  - echo "$docker_password" | docker login -u "$docker_username" --password-stdin
   - docker images #to_verify
-  - docker push vvineethmenon/travis:v1
+  - docker push vvineethmenon/travis:v1 
 notification:
  email:
     recipients:
